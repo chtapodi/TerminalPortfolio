@@ -1,0 +1,3 @@
+Xavier Quinn is a computer engineering student at Union College.
+He spends his time building and flying quadcopters, reading, or trying to get
+one of his servers working.

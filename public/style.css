@@ -1,0 +1,54 @@
+body {
+  background-color: #002b36;
+  color: #859900; /*green*/
+  font-family: Ubuntu, sans-serif;
+  word-spacing: 3px;
+  width: 50%;
+  font-size: 125%;
+  line-height: 150%;
+}
+
+.folder,
+a,
+#blue,
+#folder {
+  color: 	#268bd2
+}
+
+#grey,
+#file {
+  color: #839496;
+}
+
+#green,
+#project {
+  color: #859900;
+}
+
+.folder:hover,
+.link:hover {
+  background-color: #073642;
+}
+
+.folder:hover,
+.link:active {
+  background-color: #073642;
+}
+
+
+.img-responsive,
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+@media(max-width:768px) {
+  body {
+    width: 100%;
+    font-size: 100%;
+  }
+}

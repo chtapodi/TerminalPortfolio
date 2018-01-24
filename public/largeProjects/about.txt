@@ -1,0 +1,3 @@
+These are projects that I spent several months on with a set goal for what the final
+product would be. Most of these where for an organized program, such as a class or
+hackathon.

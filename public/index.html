@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Xavier</title>
+      <meta charset="utf-8">
+      <link rel="stylesheet"  type="text/css" href="/style.css">
+      <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+   </head>
+   <body>
+		 XavierQuinn@portfolio:<span id='blue'>~/<span id='location'></span></span><span id="grey">$</span>
+     <span id="files"/>
+
+     <span id='about'/>
+
+
+
+   <script src="/socket.io/socket.io.js"></script>
+   <script>
+     var socket = io.connect();
+     var loc = '';
+     socket.emit('getFile', loc);
+
+     function read(loc) {
+       socket.emit('readFile', loc);
+       document.getElementById("location").innerHTML = loc;
+     }
+
+     function clicked(loc) {
+      //  socket.emit('getFile');
+       socket.emit('getFile', loc);
+       document.getElementById("location").innerHTML = loc;
+     }
+
+     function gallery(loc) {
+      //  socket.emit('getFile');
+       socket.emit('hostGallery', loc);
+       window.open(
+          '/gallery',
+          '_blank'
+        );
+      }
+
+
+
+     //when we receive numClients, do this
+     socket.on('postFile', function(data){
+       document.getElementById("files").innerHTML = data;
+     });
+
+     socket.on('readOut', function(data){
+       document.getElementById("about").innerHTML = data;
+     });
+  </script>
+  </body>
+</html>

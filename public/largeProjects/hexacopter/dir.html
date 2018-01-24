@@ -1,0 +1,59 @@
+<span id='grey'>
+  cd hexacopter && ls -a && xdg-open hex*
+  <div id=commands>
+
+    <span id='file' class="link" onclick="clicked('largeProjects');"> .. </span>
+    <span id='hexacopter' onclick="gallery('largeProjects/' + this.id);" class="folder">Gallery</span>
+    <span id='project' class="link"> hex.pdf </span>
+
+
+  </span>
+
+  <h2>Semi-Autonomous Hexacopter</h2>
+  <p>This project had the goal of making a small flying fully autonimous drone that followed the user, and would thus be able to provide services such as lighting, video recording, navigation assistance, and many others.</p>
+  <p>The two main problems to solve where making a small multicopter with enough lift to carry any equipment required and to design a method of locating and following the user.</p>
+  <p>To provide enough lift I made a custom hexacopter controlled by an arduino nano, which sent signals imitating those from a receiver. This allowed me to take advantage of precisely tuned sensors and flight controllers, allowing me to focus on getting the rest of the project to work.</p>
+  <p>I had to go through many different tests to find an acceptable location method, but the one I settled on utilized a camera to track a color pattern</p>
+  <p>Here are several videos of the final design in flight. Due to safety concerns only the rotation was autonimous, but the other degrees of motion have all been tested indevidually and been proven to work</p>
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/lwPd3lndL5c" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <br>
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/8aUR0Q3wsgI" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <br>
+  <p>There are details on the entire process below</p>
+  <br>
+  <h3>Signal Tracking</h3>
+  <p>To test the different methods for locating my phone I made several small wheeled robots as they are much easier to control than flying ones.</p>
+  <img class="img-responsive" src="largeProjects/hexacopter/images/21.jpg"/>
+  <br>
+  <img class="img-responsive" src="largeProjects/hexacopter/images/22.jpg"/>
+  <p>The first method for tracking was very simple though quite inefficient. It involved moving forwards until the signal strength began to decrease, then change direction and repeat.</p>
+  <a href="https://youtu.be/pXg0gOTR6uc" target="_blank">A video of testing this method is linked here</a>
+  <br>
+  <h3>RSSI Trilateration</h3>
+  <p>My first method for tracking was based on using the RSSI (Received Signal Strength Indicator) from my phones hotspot.</p>
+  <p>To do this I used an electric imp based wireless board, and developed several methods of honing in on the phones signal. The largest issue I came across for this method was due to signal strength being logarithmic, so the values became indiscernible once any real distance away from my phone.</p>
+  <p>The method I came up with involved moving in a direction until the strength changed, noting how far that was, and then turning and repeating that proccess. This gave three points along with the signal strength at each of them, which allowed the calculation of what angle my phones hotspot was at in relation to it. It would then travel in this direction until the signal strength began to decrease, when it would repeat the proccess again.</p>
+  <p>Unfortunately the changes in signal strength where so slight that this method would only work over a very large area, so I had to find a better method.</p>
+  <br/>
+  <h3>Pattern Recognition</h3>
+  <p>The method I ended up going with was based on using a camera to track a specific color pattern. This offered the benifit of being much more accurate than the other methods I had tried, though only while in direct line of sight of the pattern. To increase the accuracy of the rotation I wrote a <a href="https://en.wikipedia.org/wiki/PID_controller">PID</a> controller to ensure smooth rotation and efficient tracking.</p>
+  <a href="https://youtu.be/fRcF1KHLXOA" target="_blank">A test of this is linked here</a>
+  <br>
+  <h3>The Hexacopter</h3>
+  <p>The hexacopter went through quite a few iterations to find the best weight to sturdiness ratio and to ensure the best placement of electronics.</p>
+  <img class="img-responsive" src="largeProjects/hexacopter/images/11.jpg"/>
+  <br/>
+  <img class="img-responsive" src="largeProjects/hexacopter/images/12.jpg"/>
+  <br/>
+  <img class="img-responsive" src="largeProjects/hexacopter/images/13.jpg"/>
+  <br/>
+  <img class="img-responsive" src="largeProjects/hexacopter/images/14.jpg"/>
+  <br>
+  <img class="img-responsive" src="largeProjects/hexacopter/images/15.jpg"/>
+  <br/>
+  <img class="img-responsive" src="largeProjects/hexacopter/images/16.jpg"/>
+  <br/>
